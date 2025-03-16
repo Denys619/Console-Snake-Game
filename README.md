@@ -42,6 +42,7 @@ The game runs in a terminal and offers a classic gaming experience.This is a con
 - **Console graphics**: ASCII
 - **The logic of the game**: Динамічні масиви, обробка вводу
 
+⚠️  The game currently works on **Linux** and **macOS**. Windows support is not implemented yet.
 
 ## 📸 Screenshots
 ![image](https://github.com/user-attachments/assets/230563db-4b76-47b2-b699-7ef1d04cbe02)
@@ -55,6 +56,8 @@ The game runs in a terminal and offers a classic gaming experience.This is a con
 - 🔲 Add saving the best results
 - 🔲 Improve control (e.g. arrow support)
 - 🔲 Add sound effects
+- 🔲 Implement Windows support
+
 
 ## I look forward to your ideas and pull requests! 🚀
 

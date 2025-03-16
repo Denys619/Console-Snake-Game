@@ -1,0 +1,13 @@
+# Ігноруємо всі згенеровані файли
+/build/
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+*.o
+*.so
+*.a
+*.exe
+*.out
+*.log
+

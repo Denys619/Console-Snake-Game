@@ -26,6 +26,8 @@ Field::~Field() {
     delete[] grid;
 }
 
+//-----------------------------------------------------------------------------------------
+
 void Field::import_snake(Snake& snake) {
    
     grid[snake.body_position[0].first][snake.body_position[0].second] = 'O';
@@ -35,9 +37,13 @@ void Field::import_snake(Snake& snake) {
     }
 }
 
+//-----------------------------------------------------------------------------------------
+
 void Field::import_food(Food& food) {
     grid[food.position.first][food.position.second] = '*';
 }
+
+//-----------------------------------------------------------------------------------------
 
 void Field::print_grid() {
     std::cout << "\033[H";
@@ -50,6 +56,8 @@ void Field::print_grid() {
     }
     std::cout.flush();
 }
+
+//-----------------------------------------------------------------------------------------
 
 bool Field::is_border(int row, int col) {
     return (row == 0 || col == 0 || row == height - 1 || col == width - 1);

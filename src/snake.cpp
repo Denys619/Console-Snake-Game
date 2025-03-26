@@ -5,9 +5,11 @@
 Snake::Snake(): length(4), direction(LEFT), next_direction(LEFT) {
     
     for(int i = 0; i < length; ++i) {
-        body_position.push_back({7, 15 + i});
+        body_position.emplace_back(7, 15 + i);
     }
 }
+
+//-----------------------------------------------------------------------------------------
 
 void* Snake::listen_keyboard(void* arg) {
 
@@ -24,14 +26,20 @@ void* Snake::listen_keyboard(void* arg) {
     pthread_exit(nullptr);
 }
 
+//-----------------------------------------------------------------------------------------
+
 void Snake::start_listening_keyboard(pthread_t& keyboard_thread) {
     pthread_create(&keyboard_thread, nullptr, Snake::listen_keyboard, this);
 }
+
+//-----------------------------------------------------------------------------------------
 
 void Snake::stop_listening_keyboard(pthread_t& keyboard_thread) {
     pthread_cancel(keyboard_thread);
     pthread_join(keyboard_thread, nullptr);
 }
+
+//-----------------------------------------------------------------------------------------
 
 void Snake::snake_position_update(Field& field){
     direction = next_direction;
@@ -66,6 +74,8 @@ void Snake::snake_position_update(Field& field){
     }
 }
 
+//-----------------------------------------------------------------------------------------
+
 bool Snake::head_on_border(Field& field) {
     std::pair<int, int>& head_position = body_position[0];
 
@@ -75,6 +85,8 @@ bool Snake::head_on_border(Field& field) {
             head_position.second == field.width - 1) return true;
     return false;
 }
+
+//-----------------------------------------------------------------------------------------
 
 bool Snake::head_on_body() {
     std::pair<int, int>& head_position = body_position[0];
@@ -86,12 +98,16 @@ bool Snake::head_on_body() {
     return false;
 }
 
+//-----------------------------------------------------------------------------------------
+
 bool Snake::head_on_food(Food& food) {
     std::pair<int, int>& head_position = body_position[0];
 
     if (head_position.first == food.position.first && head_position.second == food.position.second) return true;
     return false;
 }
+
+//-----------------------------------------------------------------------------------------
 
 void Snake::grow() {
     std::pair<int, int> tail = body_position.back();
@@ -103,5 +119,5 @@ void Snake::grow() {
         case RIGHT: --tail.second; break; 
     }
 
-    body_position.push_back(tail);
+    body_position.emplace_back(tail);
 }

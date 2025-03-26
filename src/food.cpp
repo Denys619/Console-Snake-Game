@@ -6,6 +6,8 @@ Food::Food() {
     position = {random(1, MAX_POS_Y), random(1, MAX_POS_X)};
 }
 
+//-----------------------------------------------------------------------------------------
+
 void Food::generate_new_food(Snake& snake) {
     position = {random(1, MAX_POS_Y), random(1, MAX_POS_X)};
 
